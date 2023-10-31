@@ -114,13 +114,30 @@ export class MenuComponent implements OnInit{
       next: response => {
         this.correct = 'Data was upload';
         console.log(response);
-        let buff: any[] = response.items;
-        this.jsonCurrentWar = buff.map(itemResponse => ({ 
-          name: itemResponse.name,
-          tag: itemResponse.tag,
-          donations: itemResponse.donations,
-          donationsReceived: itemResponse.donationsReceived,
-        }));
+        this.jsonCurrentWar = {
+          clan: {
+            attacks: response.clan.attacks,
+            destructionPercentage: response.clan.destructionPercentage,
+            members: response.clan.members,
+            name: response.clan.name,
+            stars: response.clan.stars,
+            tag: response.clan.tag,
+          },
+          opponent: {
+            attacks: response.opponent.attacks,
+            destructionPercentage: response.opponent.destructionPercentage,
+            name: response.opponent.name,
+            stars: response.opponent.stars,
+            tag: response.opponent.tag,
+            members: response.opponent.members,
+          },
+          attacksPerMember: response.attacksPerMember,
+          endTime: response.endTime,
+          preparationStartTime: response.preparationStartTime,
+          startTime: response.startTime,
+          state: response.state,
+          teamSize: response.teamSize,
+        };
       },
       error: error => {
         console.error(error);
