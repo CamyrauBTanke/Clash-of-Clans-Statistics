@@ -1,0 +1,55 @@
+<section class="container section form">
+    <header class="form__header">
+        <div class="header-img">
+            <a target="_blank" href="https://xoxotcmertu21.wixsite.com/ptolemeis">
+                <img src="../../../assets/imgs/logo.jpg" alt="" class="img-cover">
+            </a>
+        </div>
+        <a target="_blank" href="https://docs.google.com/spreadsheets/d/1ZvenX1dcPI5boMsSFJrltGwuEQYpaNXDPJ0UmCYaYMk/" class="button button_link">Google sheets</a>
+        <a target="_blank" href="https://t.me/ptolemies_bot" class="button button_link">Telegram</a>
+        <a target="_blank" href="https://www.youtube.com/channel/UCCIaTyFJqvO1SanxoltkOAA" class="button button_link">YouTube</a>
+        <a target="_blank" href="https://www.clashofstats.com/ru/clans/2YJURY92V/summary" class="button button_link">Clash of Stats</a>
+        <a target="_blank" href="https://github.com/CamyrauBTanke" class="button button_link">CamyrauBTanke</a>
+    </header>
+
+    <div class="form form-card">
+        <header class="form__header form__header_space-between">
+            <div class="form__text-box">
+                <h2 class="">Select the clan for which you want to receive data</h2>
+                <p class="">Use the buttons next to the search to get specific information</p>
+            </div>
+            <div class="form__main__item">
+                <button class="button button_fill button_fill_small" (click)="clanTag = '#2YJURY92V'">✴️•Птолемеи•✴️</button>
+                <button class="button button_fill button_fill_small" (click)="clanTag = '#2L88GRR8L'">✳️•Кэмпбеллы•✳️</button>
+            </div>
+        </header>
+    
+        <div class="form__header form__header_space-between">
+            <div class="form__header">
+                <input [(ngModel)]="clanTag" placeholder="Enter clan tag..." style="width: auto;">
+                <p class="error-box" *ngIf="errors">{{errors}}</p>
+                <p class="correct-box" *ngIf="correct">{{correct}}</p>
+            </div>
+    
+            <div class="form__main__item">
+                <button class="button button_fill button_fill_small" (click)="getClanMembers()">Members</button>
+                <button class="button button_fill button_fill_small" (click)="getWarLog()">War Log</button>
+                <button class="button button_fill button_fill_small" (click)="getCurrentWar()">Current War</button>
+                <button class="button button_fill button_fill_small" (click)="getLeagueGroup()">League Group</button>
+                <button class="button button_fill button_fill_small" (click)="getCapitalRaidSeasons()">Capital Raid Seasons</button>
+            </div>
+        </div>
+
+        <footer class="form__footer" *ngIf="jsonMembers || jsonWarLog || jsonCurrentWar || jsonLeagueGroup || jsonCapitalRaidSeasons">
+            <button *ngIf="jsonMembers" class="button button_fill" (click)="downloadJson(jsonMembers, 'members/')">Download Members</button>
+            <button *ngIf="jsonWarLog" class="button button_fill" (click)="downloadJson(jsonWarLog, 'war-log/')">Download War Log</button>
+            <button *ngIf="jsonCurrentWar" class="button button_fill" (click)="downloadJson(jsonCurrentWar, 'current-war/')">Download Current War</button>
+            <button *ngIf="jsonLeagueGroup" class="button button_fill" (click)="downloadJson(jsonLeagueGroup, 'league-group/')">Download League Group</button>
+            <button *ngIf="jsonCapitalRaidSeasons" class="button button_fill" (click)="downloadJson(jsonCapitalRaidSeasons, 'capital-raid-seasons/')">Download Capital Raid Seasons</button>
+        </footer>
+    </div>
+
+    <footer class="form__footer">
+        <p class="">Created with the support of the clan ✴️•Птолемеи•✴️</p>
+    </footer>
+</section>

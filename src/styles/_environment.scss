@@ -1,0 +1,55 @@
+// _environment.less
+// USER VARIABLES ENVIRONMENT
+
+// COLORS
+$accent-color-1: #e9e9e9;
+$accent-color-2: #5363ba;
+
+$button-color-1: #f8f8f8;
+$button-color-2: #6477e0;
+
+$inactive-color: #AAAAAA;
+$danger-color: #C64D4D;
+
+$correct-color: #0ab555;
+$error-color: #ff4081;
+$disabled-color: #c7c7c7;
+$warning-color: #DB8300;
+$info-color: #414141;
+$info-text-color: #fff;
+
+$title-color: #414141;
+$title2-color: #FFFFFF;
+$subtitle-color: #FFFFFF;
+$text-color: #606060;
+
+$body-color: #fff;
+$section-color: #FFFFFF;
+$card-color: #fff;
+$card-color-2: #323232;
+$sidebar-color: #FCFCFC;
+$border-color: #E9E9E7;
+$card-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+
+$sidebar-link-hover-color: rgba(55, 55, 55, 0.08);
+$sidebar-link-active-color: rgba(55, 55, 55, 0.16);
+$sidebar-text-color: #7c7c7c;
+
+$select-background-color: #f8f8f8;
+
+// FONT
+$font-size: 18px; 									// Document Font Size
+$line-height: 1.3em; 								// Document Line Height
+$user-font: '-apple-system', 'Arial', sans-serif;   // User Font Family
+$system-font: '-apple-system', 'Arial', sans-serif; // System Font Family
+
+// LAYOUT
+$items-offset: 12px;
+$sections-offset-huge: 72px;
+$sections-offset-small: 24px;
+$padding-huge: 48px;
+$padding-big: 36px;
+$padding-middle: 24px;
+$padding-small: 12px;
+$padding-tiny: 6px;
+$container-horizontal-offset: 3vw;

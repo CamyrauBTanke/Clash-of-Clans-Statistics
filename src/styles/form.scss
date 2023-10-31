@@ -1,0 +1,72 @@
+@use './environment' as *;
+
+.form{
+  background-color: $card-color;
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  gap: $padding-huge;
+
+  &__text-box{
+    display: grid;
+    gap: $padding-tiny;
+  }
+
+  &__group-elements{
+    display: grid;
+    gap: $padding-middle;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+
+    @media (max-width: 650px) {
+      grid-template-columns: auto;
+    }
+  }
+
+  &__header{
+    display: flex;
+    align-items: center;
+    gap: $padding-middle;
+    flex-wrap: wrap;
+
+    &_space-auto{
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: $padding-small;
+      justify-content: space-between;
+    }
+
+    &_space-between{
+      justify-content: space-between;
+    }
+  }
+
+  &__footer{
+    display: flex;
+    align-items: center;
+    gap: $padding-middle;
+    flex-wrap: wrap;
+    
+    &_space-between{
+      justify-content: space-between;
+    }
+  }
+
+  &__main{
+    display: grid;
+    gap: $padding-middle;
+
+    &__item{
+      display: flex;
+      align-items: center;
+      gap: $padding-tiny;
+      flex-wrap: wrap;
+    }
+
+    &_small{
+      display: grid;
+      gap: $padding-small;  
+    }
+  }
+}

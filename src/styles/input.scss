@@ -1,0 +1,207 @@
+@use './environment' as *;
+
+form{
+    box-sizing: border-box;
+}
+
+input, textarea{
+    color: $text-color;
+    padding: $padding-small;
+    transition: 0.2s ease-in-out;
+    cursor: text;
+    box-sizing: border-box;
+    width: 100%;
+    user-select: none;
+    background-color: $button-color-1;
+    outline: 0;
+    border-radius: $padding-small;
+    border: 2px solid $border-color;
+
+    &:focus{
+        
+    }
+
+    &:active{
+
+    }
+
+    &:disabled{
+        background: none;
+    }
+}
+
+input[type=radio] {
+    transition: .2s ease-in-out;
+    appearance: none;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    padding: 0;
+    border: 2px solid $border-color;
+
+    &:checked {
+        border: 5px solid rgba($color: $accent-color-2, $alpha: 1);
+    }
+}
+
+input[type=checkbox]{
+    width: 17px;
+    height: 17px;
+    padding: 0;
+    border: 2px solid transparent;
+    border-radius: 3px;
+    transition: .2s ease-in-out;
+    position: relative;
+
+    &:before {
+        transition: .2s ease-in-out;
+        width: 15px;
+        height: 15px;
+        border-radius: 3px;
+        border: 2px solid $text-color;
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: 1;
+        background: $button-color-1;
+        top: 0;
+        left: 0;
+    }
+    &:checked:before{ border-color: $accent-color-2; }
+    &:checked:after{
+        transition: .2s ease-in-out;
+        content: "";
+        display: block;
+        width: 5px;
+        height: 10px;
+        border: solid $accent-color-2;
+        border-width: 0 2px 2px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        position: absolute;
+        z-index: 2;
+        top: 2px;
+        left: 6px;
+    }
+}
+
+textarea{
+    width: 100%;
+    resize: vertical;
+    border: none;
+    outline: none;
+    font-family: $user-font;
+	line-height: $line-height;
+    font-size: 0.9rem;
+}
+
+input[type=number]{
+    -moz-appearance: textfield;
+    border: none !important;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.input{
+    padding-bottom: $padding-tiny;
+    padding-top: $padding-middle;
+    opacity: 0;
+
+    &__label{
+        transition: 0.2s ease-in-out;
+        user-select: none;
+        font-size: 1em;
+        position: absolute;
+        margin: auto 0px;
+        box-sizing: border-box;
+        padding: 0px $padding-small;
+        overflow: hidden;
+        width: calc(100% - 40px);
+        height: 20px;
+        top: 0; bottom: 0; left: 0;
+    }
+
+    &__container{
+        transition: 0.2s ease-in-out;
+        height: 50px;
+        overflow: hidden;
+        cursor: text;
+        border-top-right-radius: $padding-tiny;
+        border-top-left-radius: $padding-tiny;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 2px solid $border-color;
+        background-color: $button-color-1;
+
+        &:hover{
+            background-color: $accent-color-1;
+        }
+
+        &_box{
+            display: grid;
+            align-items: center;
+            height: 100%;
+        }
+    }
+
+    &__button{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        width: 40px;
+        height: 100%;
+    }
+
+    &_active{
+        transition: .2s ease-in-out;
+        .input{
+            opacity: 1;
+        }
+        .input__label{
+            font-size: .75em;
+            top: -20px;
+        }
+    }
+    &_focus{
+        transition: .2s ease-in-out;
+        .input{ 
+            opacity: 1;
+        }
+        .input__label{
+            color: $accent-color-2;
+            font-size: .75em;
+            top: -20px;
+        }
+        .input__container{
+            background-color: $accent-color-1;
+            border-color: $accent-color-2;
+        }
+    }
+    &_error{
+        color: $error-color;
+        border-color: $error-color;
+    }
+    &_disabled{
+        color: $disabled-color;
+        border-color: $disabled-color;
+    }
+}
+
+.textarea{
+    min-height: 100px;
+    height: auto;
+    max-height: 400px;
+
+    &__label{
+        top: $padding-small;
+        bottom: auto;
+    }
+}

@@ -1,0 +1,143 @@
+// _config.less
+// GENERAL CSS CONFIG
+
+@use './environment' as *;
+@use './button.scss';
+@use './form.scss';
+@use './input.scss';
+
+*::-webkit-scrollbar {
+  width: 15px;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: $button-color-2;
+  border-radius: 50px;
+  border: 4px solid $body-color;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+	font-family: $user-font;
+	font-size: $font-size;
+	line-height: $line-height;
+	color: $text-color;
+
+	@media (max-width: 1360px) {
+      font-size: calc(14px + 0.3vw);
+  }
+}
+
+body {
+  width: 100%;
+  min-width: 320px;
+  height: fit-content;
+  min-height: 100vh;
+	position: relative;
+	//overflow-x: hidden;
+  //overflow-y: hidden;
+  background-color: $body-color;
+}
+
+body.no_scroll {
+  overflow-y: scroll;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $user-font;
+	line-height: $line-height;
+	font-weight: 700;
+}
+
+p {
+	font-weight: 400;
+	color: $text-color;
+}
+
+a {
+  color: $text-color;
+  text-decoration: none;
+}
+
+a, span, p, div, button, input{
+  font-family: $user-font;
+	line-height: $line-height;
+  font-size: $font-size;
+  font-size: .9rem;
+}
+
+ul {
+	list-style: none;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  width: 100%;
+	max-width: calc(1220px + $container-horizontal-offset * 2);
+	margin: auto;
+	padding: 2rem $container-horizontal-offset;
+  box-sizing: border-box;
+}
+
+.form-card{
+  padding: 1.5rem;
+  background-color: $card-color;
+  width: 100%;
+  border: 2px solid $border-color;
+  border-radius: $padding-middle;
+  box-shadow: $card-shadow;
+
+  &_size{
+    &_middle{
+      max-width: 1000px;
+      width: 100%;
+    }
+  }
+}
+
+.img-full{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.img-cover{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.error-box{
+  width: auto;
+  padding: $padding-tiny;
+  background-color: rgba($color: $error-color, $alpha: .15);
+  color: $error-color;
+  border: 2px solid $error-color;
+  border-radius: $padding-tiny;
+}
+
+.correct-box{
+  width: auto;
+  padding: $padding-tiny;
+  background-color: rgba($color: $correct-color, $alpha: .15);
+  color: $correct-color;
+  border: 2px solid $correct-color;
+  border-radius: $padding-tiny;
+}
