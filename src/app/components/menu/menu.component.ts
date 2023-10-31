@@ -29,7 +29,6 @@ export class MenuComponent implements OnInit{
     if(this.newKey) this.clashOfClansService.syncApiKeyToLocalStorage(this.newKey);
     
     this.newKey = this.clashOfClansService.syncApiKeyFromLocalStorage();
-    console.log(this.newKey);
 
     this.clashOfClansService.getClanInformation('#2L88GRR8L')
     .subscribe({
@@ -52,7 +51,13 @@ export class MenuComponent implements OnInit{
       next: response => {
         this.correct = 'Data was upload';
         console.log(response);
-        this.jsonMembers = response;
+        let buff: any[] = response.items;
+        this.jsonMembers = buff.map(itemResponse => ({ 
+          name: itemResponse.name,
+          tag: itemResponse.tag,
+          donations: itemResponse.donations,
+          donationsReceived: itemResponse.donationsReceived,
+        }));
       },
       error: error => {
         console.error(error);
@@ -71,7 +76,26 @@ export class MenuComponent implements OnInit{
       next: response => {
         this.correct = 'Data was upload';
         console.log(response);
-        this.jsonWarLog = response;
+        let buff: any[] = response.items;
+        this.jsonWarLog = buff.map(itemResponse => ({ 
+          clan: {
+            tag: itemResponse.clan.tag,
+            name: itemResponse.clan.name,
+            attacks: itemResponse.clan.attacks,
+            stars: itemResponse.clan.stars,
+            destructionPercentage: itemResponse.clan.destructionPercentage,
+          },
+          opponent: {
+            tag: itemResponse.opponent.tag,
+            name: itemResponse.opponent.name,
+            stars: itemResponse.opponent.stars,
+            destructionPercentage: itemResponse.opponent.destructionPercentage,
+          },
+          attacksPerMember: itemResponse.attacksPerMember, 
+          result: itemResponse.result,
+          teamSize: itemResponse.teamSize,
+          endTime: itemResponse.endTime,
+        }));
       },
       error: error => {
         console.error(error);
@@ -90,7 +114,13 @@ export class MenuComponent implements OnInit{
       next: response => {
         this.correct = 'Data was upload';
         console.log(response);
-        this.jsonCurrentWar = response;
+        let buff: any[] = response.items;
+        this.jsonCurrentWar = buff.map(itemResponse => ({ 
+          name: itemResponse.name,
+          tag: itemResponse.tag,
+          donations: itemResponse.donations,
+          donationsReceived: itemResponse.donationsReceived,
+        }));
       },
       error: error => {
         console.error(error);
@@ -109,7 +139,10 @@ export class MenuComponent implements OnInit{
       next: response => {
         this.correct = 'Data was upload';
         console.log(response);
-        this.jsonLeagueGroup = response;
+        let buff: any[] = response.items;
+        this.jsonLeagueGroup = buff.map(itemResponse => ({ 
+          name: itemResponse.name,
+        }));
       },
       error: error => {
         console.error(error);
@@ -128,7 +161,19 @@ export class MenuComponent implements OnInit{
       next: response => {
         this.correct = 'Data was upload';
         console.log(response);
-        this.jsonCapitalRaidSeasons = response;
+        let buff: any[] = response.items;
+        this.jsonCapitalRaidSeasons = buff.map(itemResponse => ({ 
+          capitalTotalLoot: itemResponse.capitalTotalLoot,
+          defensiveReward: itemResponse.defensiveReward,
+          endTime: itemResponse.endTime,
+          enemyDistrictsDestroyed: itemResponse.enemyDistrictsDestroyed,
+          offensiveReward: itemResponse.offensiveReward,
+          raidsCompleted: itemResponse.raidsCompleted,
+          startTime: itemResponse.startTime,
+          state: itemResponse.state,
+          totalAttacks: itemResponse.totalAttacks,
+          members: itemResponse.members,
+        }));
       },
       error: error => {
         console.error(error);

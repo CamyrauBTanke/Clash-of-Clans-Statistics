@@ -28,26 +28,26 @@ export class ClashOfClansService {
   }
 
   public getClanInformation(clanTag: string): Observable<any> {    
-    return this.http.get(`${this.apiUrl}/clans/${encodeURIComponent(clanTag)}`, { headers: this.newApiKey !== null || undefined ? new HttpHeaders({ Authorization: `Bearer ${this.newApiKey}` }) : this.headers });
+    return this.http.get<any>(`${this.apiUrl}/clans/${encodeURIComponent(clanTag)}`, { headers: this.newApiKey !== null || undefined ? new HttpHeaders({ Authorization: `Bearer ${this.newApiKey}` }) : this.headers });
   }
 
   public getClanWarLog(clanTag: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/clans/${encodeURIComponent(clanTag)}/warlog`, { headers: this.newApiKey !== null || undefined ? new HttpHeaders({ Authorization: `Bearer ${this.newApiKey}` }) : this.headers });
+    return this.http.get<any>(`${this.apiUrl}/clans/${encodeURIComponent(clanTag)}/warlog`, { headers: this.newApiKey !== null || undefined ? new HttpHeaders({ Authorization: `Bearer ${this.newApiKey}` }) : this.headers });
   }
 
   public getClanMembers(clanTag: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/clans/${encodeURIComponent(clanTag)}/members`, { headers: this.newApiKey !== null || undefined ? new HttpHeaders({ Authorization: `Bearer ${this.newApiKey}` }) : this.headers });
+    return this.http.get<any>(`${this.apiUrl}/clans/${encodeURIComponent(clanTag)}/members`, { headers: this.newApiKey !== null || undefined ? new HttpHeaders({ Authorization: `Bearer ${this.newApiKey}` }) : this.headers });
   }
 
   public getClanCurrentWar(clanTag: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/clans/${encodeURIComponent(clanTag)}/currentwar`, { headers: this.newApiKey !== null || undefined ? new HttpHeaders({ Authorization: `Bearer ${this.newApiKey}` }) : this.headers });
+    return this.http.get<any>(`${this.apiUrl}/clans/${encodeURIComponent(clanTag)}/currentwar`, { headers: this.newApiKey !== null || undefined ? new HttpHeaders({ Authorization: `Bearer ${this.newApiKey}` }) : this.headers });
   }
 
   public getClanCapitalRaidSeasons(clanTag: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/clans/${encodeURIComponent(clanTag)}/capitalraidseasons`, { headers: this.newApiKey !== null || undefined ? new HttpHeaders({ Authorization: `Bearer ${this.newApiKey}` }) : this.headers });
+    return this.http.get<any>(`${this.apiUrl}/clans/${encodeURIComponent(clanTag)}/capitalraidseasons`, { headers: this.newApiKey !== null || undefined ? new HttpHeaders({ Authorization: `Bearer ${this.newApiKey}` }) : this.headers });
   }
 
   public getClanLeagueGroup(clanTag: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/clans/${encodeURIComponent(clanTag)}/currentwar/leaguegroup`, { headers: this.newApiKey !== null || undefined ? new HttpHeaders({ Authorization: `Bearer ${this.newApiKey}` }) : this.headers });
+    return this.http.get<any>(`${this.apiUrl}/clans/${encodeURIComponent(clanTag)}/currentwar/leaguegroup`, { headers: this.newApiKey !== null || undefined ? new HttpHeaders({ Authorization: `Bearer ${this.newApiKey}` }) : this.headers });
   }
 }
