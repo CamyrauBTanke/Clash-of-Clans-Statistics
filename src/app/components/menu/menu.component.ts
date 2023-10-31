@@ -20,6 +20,7 @@ export class MenuComponent implements OnInit{
   protected jsonCapitalRaidSeasons: any;
 
   constructor(private clashOfClansService: ClashOfClansService) {}
+
   public ngOnInit(): void {
     this.checkApiKey();
   }
