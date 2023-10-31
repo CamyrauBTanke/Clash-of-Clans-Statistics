@@ -12,7 +12,7 @@
         <a target="_blank" href="https://github.com/CamyrauBTanke" class="button button_link">CamyrauBTanke</a>
     </header>
 
-    <div class="form form-card">
+    <div class="form form-card" *ngIf="!needNewKey">
         <header class="form__header form__header_space-between">
             <div class="form__text-box">
                 <h2 class="">Select the clan for which you want to receive data</h2>
@@ -46,6 +46,20 @@
             <button *ngIf="jsonCurrentWar" class="button button_fill" (click)="downloadJson(jsonCurrentWar, 'current-war/')">Download Current War</button>
             <button *ngIf="jsonLeagueGroup" class="button button_fill" (click)="downloadJson(jsonLeagueGroup, 'league-group/')">Download League Group</button>
             <button *ngIf="jsonCapitalRaidSeasons" class="button button_fill" (click)="downloadJson(jsonCapitalRaidSeasons, 'capital-raid-seasons/')">Download Capital Raid Seasons</button>
+        </footer>
+    </div>
+
+    <div class="form form-card form-card_size_middle" *ngIf="needNewKey">
+        <header class="form__text-box">
+            <h2 class="">Access key</h2>
+            <p class="">Please add a valid passkey to continue.</p>
+        </header>
+
+        <p class="error-box" *ngIf="errors">{{errors}}</p>
+        <input [(ngModel)]="newKey" placeholder="Enter new key...">
+
+        <footer>
+            <button class="button button_fill" (click)="checkApiKey()">Next</button>
         </footer>
     </div>
 

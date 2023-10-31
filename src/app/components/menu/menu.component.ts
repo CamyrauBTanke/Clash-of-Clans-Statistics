@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ClashOfClansService } from 'src/app/service/clash-of-clans';
 
 @Component({
@@ -6,7 +6,9 @@ import { ClashOfClansService } from 'src/app/service/clash-of-clans';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent {
+export class MenuComponent implements OnInit{
+  protected needNewKey: boolean = false;
+  protected newKey: string | null | undefined = null;
   protected errors: string = '';
   protected correct: string = '';
   protected clanTag: string = '#2L88GRR8L';
@@ -18,7 +20,29 @@ export class MenuComponent {
   protected jsonCapitalRaidSeasons: any;
 
   constructor(private clashOfClansService: ClashOfClansService) {}
+  public ngOnInit(): void {
+    this.checkApiKey();
+  }
 
+  protected checkApiKey(){
+    this.errors = ''; this.correct = '';
+    if(this.newKey) this.clashOfClansService.syncApiKeyToLocalStorage(this.newKey);
+    
+    this.newKey = this.clashOfClansService.syncApiKeyFromLocalStorage();
+    console.log(this.newKey);
+
+    this.clashOfClansService.getClanInformation('#2L88GRR8L')
+    .subscribe({
+      next: () => this.needNewKey = false,
+      error: error => {
+        console.error(error);
+        this.errors = error.status + ' ' + error.error.reason + ' ' + error.error.message;
+        if(error.status === 403)
+          this.needNewKey = true;
+      }
+    });
+  }
+  
   // get clash of clans data
   protected getClanMembers(): void {
     this.errors = ''; this.correct = ''; this.jsonMembers = null;
@@ -32,7 +56,9 @@ export class MenuComponent {
       },
       error: error => {
         console.error(error);
-        this.errors = error.status + ' ' + error.error.reason;
+        this.errors = error.status + ' ' + error.error.reason + ' ' + error.error.message;
+        if(error.status === 403)
+          this.needNewKey = true;
       }
     });
   }
@@ -49,7 +75,9 @@ export class MenuComponent {
       },
       error: error => {
         console.error(error);
-        this.errors = error.status + ' ' + error.error.reason;
+        this.errors = error.status + ' ' + error.error.reason + ' ' + error.error.message;
+        if(error.status === 403)
+          this.needNewKey = true;
       }
     });
   }
@@ -66,7 +94,9 @@ export class MenuComponent {
       },
       error: error => {
         console.error(error);
-        this.errors = error.status + ' ' + error.error.reason;
+        this.errors = error.status + ' ' + error.error.reason + ' ' + error.error.message;
+        if(error.status === 403)
+          this.needNewKey = true;
       }
     });
   }
@@ -83,7 +113,9 @@ export class MenuComponent {
       },
       error: error => {
         console.error(error);
-        this.errors = error.status + ' ' + error.error.reason;
+        this.errors = error.status + ' ' + error.error.reason + ' ' + error.error.message;
+        if(error.status === 403)
+          this.needNewKey = true;
       }
     });
   }
@@ -100,7 +132,9 @@ export class MenuComponent {
       },
       error: error => {
         console.error(error);
-        this.errors = error.status + ' ' + error.error.reason;
+        this.errors = error.status + ' ' + error.error.reason + ' ' + error.error.message;
+        if(error.status === 403)
+          this.needNewKey = true;
       }
     });
   }
